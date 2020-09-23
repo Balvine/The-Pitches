@@ -1,15 +1,13 @@
 
-{% extends 'bootstrap/base.html'%}
-
-<!-- Navbar block  --> 
+{% extends 'bootstrap/base.html' %}
 {% block navbar %}
-{% include 'navbar.html' %}
+   {% include 'navbar.html' %}
 {% endblock %}
-
+{% block content %}
+   {% include 'index.html' %}
+{%endblock%}    
 {%block styles %}
-{{super()}}
-<!--Importing the simple mde css and js files  -->
-{{ simplemde.css}}
-{{ simplemde.js }}
-
-{% endblock %}
+ {{super()}}
+ <link rel="stylesheet" type= "text/css" href="{{url_for('static',filename='css/index.css')}}">
+ <link href="https://fonts.googleapis.com/css?family=Cinzel|Orbitron" rel="stylesheet">
+{% endblock %} 

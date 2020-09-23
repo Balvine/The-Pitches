@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+<!-- content block -->
+ {% block content %}
+<div id="category">
+  <h2>Welcome to {{category | title }}</h2>
+  <a class="btn btn-success text-center " href="{{url_for('main.new_post', ct_name=category)}}"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Post a Pitch</a>
+  <hr>
+   <h3>Pitches:</h3>
+   {% for post in posts %}
+  <div class="panel panel-success">
+      <div class="panel-heading">
+        <h3 class="panel-title">{{post.post_title}}</h3>
+      </div>
+      <div class="panel-body">
+          <p class='firstletter'>{{post.post_text}}</p>
+      </div>
+    <div class="panel-footer"><a class="btn btn-success text-center" href="{{url_for('main.view_post', id=post.id)}}">View Comments</a></div>
+  </div>
+  {% endfor %}
+ {% endblock %}

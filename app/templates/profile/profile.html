@@ -1,0 +1,49 @@
+{% extends 'base.html'%}
+ {% block content %}
+<div class="container">
+<div class="row">
+<!-- displaying  Username-->
+  <div class="col-md-4">
+    <h3> {{user.username| capitalize}} </h3>
+     <!--Displaying user bio-->
+    {% if user.bio %}
+      <p> {{user.bio}}</p>
+    {%else%}
+      <p> {{user.username| capitalize}} has no bio info </p>
+    {% endif %}
+  </div>
+   <!--Display profile photo-->
+  <div class="col-md-4">
+     {% if user.profile_pic_path %}
+    <img src="{{url_for('static',filename=user.profile_pic_path)}}" alt="" class="img-thumbnail">
+    {%else%}
+    <p>No profile picture</p>
+    {% endif %}
+    {% if user == current_user %}
+    <form  action="{{url_for('main.update_pic',uname=user.username)}}" method="post" enctype = "multipart/form-data">
+       <input type="file"  name="photo" class="form-control" required>
+      <input type="submit">
+    </form>
+      {% endif %}
+  </div>
+</div>
+</div>
+{% if user == current_user %}
+    <a href="{{url_for('main.update_profile',uname=user.username)}}">Edit profile</a>
+{% endif %}
+ <br>
+ <div id='profile'>
+<h3>My Pitches:</h3>
+ {% for post in posts %}
+<div class="panel panel-primary">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{post.post_title}}</h3>
+    </div>
+    <div class="panel-body">
+        <p class='firstletter'>{{post.post_text}}</p>
+    </div>
+  <div class="panel-footer"><a class="btn btn-primary text-center" href="{{url_for('main.view_post', id=post.id)}}">View Comments</a></div>
+</div>
+{% endfor %}
+</div>
+{% endblock %} 
