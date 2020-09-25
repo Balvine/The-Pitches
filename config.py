@@ -7,7 +7,7 @@ class Config:
         General configuration parent class
         """
         SECRET_KEY = 'barl'
-        SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:Access@localhost/pitches'
+        #SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:Access@localhost/pitches'
         SECRET_KEY = os.environ.get('SECRET_KEY') or 'you-will-never-guesss'
         SQLALCHEMY_TRACK_MODIFICATIONS = False
         UPLOADED_PHOTOS_DEST = 'app/static/photos'
@@ -20,7 +20,8 @@ class Config:
         print(MAIL_PASSWORD)
 
 class TestConfig(Config):
-    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:Access@localhost/pitches'
+    SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:Access@localhost/pitches_test'
+    DEGUG = True
 class ProdConfig(Config):
     """
     Production configuration child class
@@ -44,6 +45,9 @@ class DevConfig(Config):
     SQLALCHEMY_DATABASE_URI ='postgresql+psycopg2://moringa:Access@localhost/pitches'
     # SECRET_KEY = os.urandom(38)
     DEBUG = True
+    
+    
+    
 
 config_options = {
 'development':DevConfig,
