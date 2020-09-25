@@ -1,3 +1,9 @@
   body{
-      
+      background-color: gainsboro;
+  }
+  p{
+    text-align: center;
+  }
+  .jumbotron{
+    padding: 20px;
   }

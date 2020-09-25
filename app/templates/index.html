@@ -2,23 +2,25 @@
 
 
 {% block content %}
-
-<div id="index">
-<h1>Welcome  To  PitchOnes !</h1>
+<div class="jumbotron">
+<h1>Welcome  To  The Pitches !</h1>
+</div>
 <p id='intro'>An application that allows you to submit pitch ones a mintue.</p>
 <br>
 <p id='select'>Please select a catagory:</p>
 
     <div class="btn-group" role="group">
-        <a class="btn btn-success btn-lg" href="/category/showerthoughts">i. Night-Thoughts</a>
+        <a class="btn btn-info btn-lg" href="/category/showerthoughts">i. Night-Thoughts</a>
     </div>
+    <br>
     <br>
     <div class="btn-group" role="group">
          <a  class="btn btn-success btn-lg" href="{{url_for('main.category',ct_name='dadjokes')}}">ii. Bad-Jokes</a>
     </div>
     <br>
+    <br>
     <div class="btn-group" role="group">
        <a class="btn btn-success btn-lg" href="/category/til">iii. ASAP</a>
  
-</div>
+        
 {% endblock%}
