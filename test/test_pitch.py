@@ -6,6 +6,7 @@ from app import db
 class PostTest(unittest.TestCase):
     def setUp(self):
         self.user_test = User(username='test9', email='test9@gmail.com', password='testpass')
+    
         self.new_post = Post(post_category='til', post_title='test',post_text='test post', user='test')
     
     def tearDown(self):        
